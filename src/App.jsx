@@ -2,15 +2,15 @@ import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 
 // Contacts List (may be subject to changes).
-const FALLBACK_CONTACTS = [
+const Contactos = [
     {
         id: 1,
         name: "Keiichi Tsuchiya",
         car: "Toyota AE86 Sprinter Trueno",
         phone: "(555) 010-0101",
         email: "keiichi@email.com",
-        photo: "src/assets/photo.png",
-        alt: "Photo of Keiichi Tsuchiya",
+        photo: "/Images/Keiichi.jpg",
+        alt: "Photo of Keiichi Tsuchiya and his Toyota AE86",
     },
     {
         id: 2,
@@ -18,8 +18,8 @@ const FALLBACK_CONTACTS = [
         car: "Top Secret Toyota Supra GT-300",
         phone: "(555) 010-0102",
         email: "kazuhiko@email.com",
-        photo: "src/assets/photo.png",
-        alt: "Photo of Kazuhiko Nagata",
+        photo: "/Images/KazuhikoNagata.jpg",
+        alt: "Photo of Kazuhiko Nagata after crashing his old Nissan Skyline GT-R R32",
     },
     {
         id: 3,
@@ -27,7 +27,7 @@ const FALLBACK_CONTACTS = [
         car: "Toyota Sprinter Trueno AE86 GT-APEX",
         phone: "(555) 010-0103",
         email: "takumi@email.com",
-        photo: "src/assets/photo.png",
+        photo: "/Images/Takumi.jpg",
         alt: "Photo of Takumi Fujiwara",
     },
     {
@@ -36,8 +36,8 @@ const FALLBACK_CONTACTS = [
         car: "Nissan Skyline ER34",
         phone: "(555) 010-0104",
         email: "ken@email.com",
-        photo: "src/assets/photo.png",
-        alt: "Photo of Ken Nomura"
+        photo: "/Images/Nomuken.jpg",
+        alt: "Photo of Ken Nomura driving his Nissan Skyline",
     },
     {
         id: 5,
@@ -45,8 +45,8 @@ const FALLBACK_CONTACTS = [
         car: "Mazda Savanna RX-7 (FC3S)",
         phone: "(555) 010-0105",
         email: "ryosuke@email.com",
-        photo: "src/assets/photo.png",
-        alt: "Photo of Ryosuke Takahashi"
+        photo: "/Images/Ryo.jpg",
+        alt: "Photo of Ryosuke Takahashi and his Mazda RX-7",
     },
     {
         id: 6,
@@ -54,8 +54,8 @@ const FALLBACK_CONTACTS = [
         car: "Nissan SilEighty (RPS13)",
         phone: "(555) 010-0106",
         email: "mako@email.com",
-        photo: "src/assets/photo.png",
-        alt: "Photo of Mako Sato",
+        photo: "/Images/Mako.jpg",
+        alt: "Photo of Mako Sato's Nissan SilEighty",
     },
     {
         id: 7,
@@ -63,8 +63,8 @@ const FALLBACK_CONTACTS = [
         car: "Nissan Skyline GT-R R32",
         phone: "(555) 010-0107",
         email: "reina@email.com",
-        photo: "src/assets/photo.png",
-        alt: "Photo of Reina Akikawa",
+        photo: "/Images/Reina.jpg",
+        alt: "Photo of Reina Akikawa and her Nissan Skyline GT-R R32",
     },
     {
         id: 8,
@@ -72,7 +72,7 @@ const FALLBACK_CONTACTS = [
         car: "Nissan Fairlady Z (S30)",
         phone: "(555) 010-0108",
         email: "akio@email.com",
-        photo: "src/assets/photo.png",
+        photo: "/Images/Akio.jpg",
         alt: "Photo of Akio Asakura",
     },
     {
@@ -81,8 +81,8 @@ const FALLBACK_CONTACTS = [
         car: "Porsche 934",
         phone: "(555) 010-0109",
         email: "tatsuya@email.com",
-        photo: "src/assets/photo.png",
-        alt: "Photo of Tatsuya Shima",
+        photo: "/Images/Tatsuya.jpg",
+        alt: "Photo of Tatsuya Shima with his girlfriend, Eriko, and his Porsche 934",
     },
     {
         id: 10,
@@ -90,17 +90,19 @@ const FALLBACK_CONTACTS = [
         car: "Ferrari Testarossa (F110)",
         phone: "(555) 010-0110",
         email: "ishida@email.com",
-        photo: "src/assets/photo.png",
-        alt: "Photo of Yoshiaki Ishida",
+        photo: "/Images/Ishida.jpg",
+        alt: "Photo of Yoshiaki Ishida driving his Ferrari",
     },
 ];
 
 const App = () => {
-    const [contacts, setContacts] = useState(FALLBACK_CONTACTS);
+    const [contacts, setContacts] = useState(Contactos);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        setContacts(Contactos);
+    }, []);
 
     const [query, setQuery] = useState("");
 
@@ -141,6 +143,23 @@ const App = () => {
 
             <section className="contacts" aria-labelledby="contacts-heading">
                 <h2 id="contacts-heading">Contacts</h2>
+                <ul className="contacts__list" data-testid="contacts-list">
+                    {contacts.map((contact) => (
+                        <li className="contact-card" key={contact.id}>
+                            <img
+                                className="contact-card__photo"
+                                src={contact.photo}
+                                alt={contact.alt}
+                            />
+                            <div className="contact-card__info">
+                                <h3 className="contact-card__name">{contact.name}</h3>
+                                <p>Car:</p><p className="contact-card__car">{contact.car}</p>
+                                <p>Phone:</p><p className="contact-card__phone">{contact.phone}</p>
+                                <p>Email:</p><p className="contact-card__email">{contact.email}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
             </section>
 
             <section className="form" aria-labelledby="form-heading">
