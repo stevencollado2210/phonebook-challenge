@@ -9,7 +9,7 @@ const Contactos = [
       car: "Toyota AE86 Sprinter Trueno",
       phone: "(555) 010-0101",
       email: "keiichi@email.com",
-    photo: "./Images/Keiichi.jpg",
+      photo: "./Images/Keiichi.jpg",
       alt: "Photo of Keiichi Tsuchiya and his Toyota AE86",
   },
   {
@@ -18,7 +18,7 @@ const Contactos = [
       car: "Top Secret Toyota Supra GT-300",
       phone: "(555) 010-0102",
       email: "kazuhiko@email.com",
-    photo: "./Images/KazuhikoNagata.jpg",
+      photo: "./Images/KazuhikoNagata.jpg",
       alt: "Photo of Kazuhiko Nagata after crashing his old Nissan Skyline GT-R R32",
   },
   {
@@ -27,7 +27,7 @@ const Contactos = [
       car: "Toyota Sprinter Trueno AE86 GT-APEX",
       phone: "(555) 010-0103",
       email: "takumi@email.com",
-    photo: "./Images/Takumi.jpg",
+      photo: "./Images/Takumi.jpg",
       alt: "Photo of Takumi Fujiwara",
   },
   {
@@ -36,7 +36,7 @@ const Contactos = [
       car: "Nissan Skyline ER34",
       phone: "(555) 010-0104",
       email: "ken@email.com",
-    photo: "./Images/Nomuken.jpg",
+      photo: "./Images/Nomuken.jpg",
       alt: "Photo of Ken Nomura driving his Nissan Skyline",
   },
   {
@@ -45,7 +45,7 @@ const Contactos = [
       car: "Mazda Savanna RX-7 (FC3S)",
       phone: "(555) 010-0105",
       email: "ryosuke@email.com",
-    photo: "./Images/Ryo.jpg",
+      photo: "./Images/Ryo.jpg",
       alt: "Photo of Ryosuke Takahashi and his Mazda RX-7",
   },
   {
@@ -54,7 +54,7 @@ const Contactos = [
       car: "Nissan SilEighty (RPS13)",
       phone: "(555) 010-0106",
       email: "mako@email.com",
-    photo: "./Images/Mako.jpg",
+      photo: "./Images/Mako.jpg",
       alt: "Photo of Mako Sato's Nissan SilEighty",
   },
   {
@@ -63,7 +63,7 @@ const Contactos = [
       car: "Nissan Skyline GT-R R32",
       phone: "(555) 010-0107",
       email: "reina@email.com",
-    photo: "./Images/Reina.jpg",
+      photo: "./Images/Reina.jpg",
       alt: "Photo of Reina Akikawa and her Nissan Skyline GT-R R32",
   },
   {
@@ -72,7 +72,7 @@ const Contactos = [
       car: "Nissan Fairlady Z (S30)",
       phone: "(555) 010-0108",
       email: "akio@email.com",
-    photo: "./Images/Akio.jpg",
+      photo: "./Images/Akio.jpg",
       alt: "Photo of Akio Asakura",
   },
   {
@@ -81,7 +81,7 @@ const Contactos = [
       car: "Porsche 934",
       phone: "(555) 010-0109",
       email: "tatsuya@email.com",
-    photo: "./Images/Tatsuya.jpg",
+      photo: "./Images/Tatsuya.jpg",
       alt: "Photo of Tatsuya Shima with his girlfriend, Eriko, and his Porsche 934",
   },
   {
@@ -90,7 +90,7 @@ const Contactos = [
       car: "Ferrari Testarossa (F110)",
       phone: "(555) 010-0110",
       email: "ishida@email.com",
-    photo: "./Images/Ishida.jpg",
+      photo: "./Images/Ishida.jpg",
       alt: "Photo of Yoshiaki Ishida driving his Ferrari",
   },
 ];
@@ -154,7 +154,7 @@ const App = () => {
                           <div className="contact-card__left">
                               <img
                                   className="contact-card__photo"
-                                  src={contact.photo}
+                                  src={new URL(contact.photo, import.meta.url).href}
                                   alt={contact.alt}
                               />
                           </div>
