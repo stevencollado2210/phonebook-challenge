@@ -3,222 +3,256 @@ import "./App.css";
 
 // Contacts List (may be subject to changes).
 const Contactos = [
-    {
-        id: 1,
-        name: "Keiichi Tsuchiya",
-        car: "Toyota AE86 Sprinter Trueno",
-        phone: "(555) 010-0101",
-        email: "keiichi@email.com",
-        photo: "/Images/Keiichi.jpg",
-        alt: "Photo of Keiichi Tsuchiya and his Toyota AE86",
-    },
-    {
-        id: 2,
-        name: "Kazuhiko Nagata",
-        car: "Top Secret Toyota Supra GT-300",
-        phone: "(555) 010-0102",
-        email: "kazuhiko@email.com",
-        photo: "/Images/KazuhikoNagata.jpg",
-        alt: "Photo of Kazuhiko Nagata after crashing his old Nissan Skyline GT-R R32",
-    },
-    {
-        id: 3,
-        name: "Takumi Fujiwara",
-        car: "Toyota Sprinter Trueno AE86 GT-APEX",
-        phone: "(555) 010-0103",
-        email: "takumi@email.com",
-        photo: "/Images/Takumi.jpg",
-        alt: "Photo of Takumi Fujiwara",
-    },
-    {
-        id: 4,
-        name: "Ken Nomura",
-        car: "Nissan Skyline ER34",
-        phone: "(555) 010-0104",
-        email: "ken@email.com",
-        photo: "/Images/Nomuken.jpg",
-        alt: "Photo of Ken Nomura driving his Nissan Skyline",
-    },
-    {
-        id: 5,
-        name: "Ryosuke Takahashi",
-        car: "Mazda Savanna RX-7 (FC3S)",
-        phone: "(555) 010-0105",
-        email: "ryosuke@email.com",
-        photo: "/Images/Ryo.jpg",
-        alt: "Photo of Ryosuke Takahashi and his Mazda RX-7",
-    },
-    {
-        id: 6,
-        name: "Mako Sato",
-        car: "Nissan SilEighty (RPS13)",
-        phone: "(555) 010-0106",
-        email: "mako@email.com",
-        photo: "/Images/Mako.jpg",
-        alt: "Photo of Mako Sato's Nissan SilEighty",
-    },
-    {
-        id: 7,
-        name: "Reina Akikawa",
-        car: "Nissan Skyline GT-R R32",
-        phone: "(555) 010-0107",
-        email: "reina@email.com",
-        photo: "/Images/Reina.jpg",
-        alt: "Photo of Reina Akikawa and her Nissan Skyline GT-R R32",
-    },
-    {
-        id: 8,
-        name: "Akio Asakura",
-        car: "Nissan Fairlady Z (S30)",
-        phone: "(555) 010-0108",
-        email: "akio@email.com",
-        photo: "/Images/Akio.jpg",
-        alt: "Photo of Akio Asakura",
-    },
-    {
-        id: 9,
-        name: "Tatsuya Shima",
-        car: "Porsche 934",
-        phone: "(555) 010-0109",
-        email: "tatsuya@email.com",
-        photo: "/Images/Tatsuya.jpg",
-        alt: "Photo of Tatsuya Shima with his girlfriend, Eriko, and his Porsche 934",
-    },
-    {
-        id: 10,
-        name: "Yoshiaki Ishida",
-        car: "Ferrari Testarossa (F110)",
-        phone: "(555) 010-0110",
-        email: "ishida@email.com",
-        photo: "/Images/Ishida.jpg",
-        alt: "Photo of Yoshiaki Ishida driving his Ferrari",
-    },
+  {
+      id: 1,
+      name: "Keiichi Tsuchiya",
+      car: "Toyota AE86 Sprinter Trueno",
+      phone: "(555) 010-0101",
+      email: "keiichi@email.com",
+    photo: "./Images/Keiichi.jpg",
+      alt: "Photo of Keiichi Tsuchiya and his Toyota AE86",
+  },
+  {
+      id: 2,
+      name: "Kazuhiko Nagata",
+      car: "Top Secret Toyota Supra GT-300",
+      phone: "(555) 010-0102",
+      email: "kazuhiko@email.com",
+    photo: "./Images/KazuhikoNagata.jpg",
+      alt: "Photo of Kazuhiko Nagata after crashing his old Nissan Skyline GT-R R32",
+  },
+  {
+      id: 3,
+      name: "Takumi Fujiwara",
+      car: "Toyota Sprinter Trueno AE86 GT-APEX",
+      phone: "(555) 010-0103",
+      email: "takumi@email.com",
+    photo: "./Images/Takumi.jpg",
+      alt: "Photo of Takumi Fujiwara",
+  },
+  {
+      id: 4,
+      name: "Ken Nomura",
+      car: "Nissan Skyline ER34",
+      phone: "(555) 010-0104",
+      email: "ken@email.com",
+    photo: "./Images/Nomuken.jpg",
+      alt: "Photo of Ken Nomura driving his Nissan Skyline",
+  },
+  {
+      id: 5,
+      name: "Ryosuke Takahashi",
+      car: "Mazda Savanna RX-7 (FC3S)",
+      phone: "(555) 010-0105",
+      email: "ryosuke@email.com",
+    photo: "./Images/Ryo.jpg",
+      alt: "Photo of Ryosuke Takahashi and his Mazda RX-7",
+  },
+  {
+      id: 6,
+      name: "Mako Sato",
+      car: "Nissan SilEighty (RPS13)",
+      phone: "(555) 010-0106",
+      email: "mako@email.com",
+    photo: "./Images/Mako.jpg",
+      alt: "Photo of Mako Sato's Nissan SilEighty",
+  },
+  {
+      id: 7,
+      name: "Reina Akikawa",
+      car: "Nissan Skyline GT-R R32",
+      phone: "(555) 010-0107",
+      email: "reina@email.com",
+    photo: "./Images/Reina.jpg",
+      alt: "Photo of Reina Akikawa and her Nissan Skyline GT-R R32",
+  },
+  {
+      id: 8,
+      name: "Akio Asakura",
+      car: "Nissan Fairlady Z (S30)",
+      phone: "(555) 010-0108",
+      email: "akio@email.com",
+    photo: "./Images/Akio.jpg",
+      alt: "Photo of Akio Asakura",
+  },
+  {
+      id: 9,
+      name: "Tatsuya Shima",
+      car: "Porsche 934",
+      phone: "(555) 010-0109",
+      email: "tatsuya@email.com",
+    photo: "./Images/Tatsuya.jpg",
+      alt: "Photo of Tatsuya Shima with his girlfriend, Eriko, and his Porsche 934",
+  },
+  {
+      id: 10,
+      name: "Yoshiaki Ishida",
+      car: "Ferrari Testarossa (F110)",
+      phone: "(555) 010-0110",
+      email: "ishida@email.com",
+    photo: "./Images/Ishida.jpg",
+      alt: "Photo of Yoshiaki Ishida driving his Ferrari",
+  },
 ];
 
+
 const App = () => {
-    const [contacts, setContacts] = useState(Contactos);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const [contacts, setContacts] = useState(Contactos);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        setContacts(Contactos);
-    }, []);
 
-    const [query, setQuery] = useState("");
+  useEffect(() => {
+      setContacts(Contactos);
+  }, []);
 
-    const [form, setForm] = useState({ name: "", phone: "", email: "" });
-    function handleSubmit(e) {
-        e.preventDefault();
-        // Add contact submission logic here
-    }
 
-    return (
-        <main className="page" data-testid="page-root">
-            <header className="page__header">
-                <h1 className="page__title">Hashiriya Book</h1>
-                <p className="page__subtitle">Contact Directory</p>
-            </header>
+  const [query, setQuery] = useState("");
 
-            <section className="search" aria-labelledby="search-heading">
-                <h2 id="search-heading">Search Contacts</h2>
-                <div className="search__controls">
-                    <label htmlFor="search-input">Search</label>
-                    <input
-                        id="search-input"
-                        type="search"
-                        placeholder="Search by name, phone number or email address"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        data-testid="search-input"
-                    />
-                </div>
 
-                <p className="search__results" data-testid="results-count">
-                    Showing {contacts.length}{" "}
-                    {contacts.length === 1 ? "result" : "results"}
-                    {loading ? " (loading...)" : ""}
-                    {error ? ` (error: ${error})` : ""}
-                </p>
-            </section>
+  const [form, setForm] = useState({ name: "", phone: "", email: "" });
+  function handleSubmit(e) {
+      e.preventDefault();
+      // Add contact submission logic here
+  }
 
-            <section className="contacts" aria-labelledby="contacts-heading">
-                <h2 id="contacts-heading">Contacts</h2>
-                <ul className="contacts__list" data-testid="contacts-list">
-                    {contacts.map((contact) => (
-                        <li className="contact-card" key={contact.id}>
-                            <img
-                                className="contact-card__photo"
-                                src={contact.photo}
-                                alt={contact.alt}
-                            />
-                            <div className="contact-card__info">
-                                <h3 className="contact-card__name">{contact.name}</h3>
-                                <p>Car:</p><p className="contact-card__car">{contact.car}</p>
-                                <p>Phone:</p><p className="contact-card__phone">{contact.phone}</p>
-                                <p>Email:</p><p className="contact-card__email">{contact.email}</p>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </section>
 
-            <section className="form" aria-labelledby="form-heading">
-                <h2 id="form-heading">Add a Contact</h2>
-                <form className="form__body" onSubmit={handleSubmit} noValidate>
-                    <div className="field">
-                        <label htmlFor="name">Name</label>
-                        <input
-                            id="name"
-                            name="name"
-                            value={form.name}
-                            placeholder="Enter your first and last name"
-                            onChange={(e) => setForm({ ...form, name: e.target.value })}
-                            required
-                            minLength={2}
-                        />
-                    </div>
-                    <div className="field">
-                        <label htmlFor="phone">Phone</label>
-                        <input
-                            id="phone"
-                            name="phone"
-                            inputMode="tel"
-                            placeholder="(000) 000-0000"
-                            value={form.phone}
-                            onChange={(e) =>
-                                setForm({ ...form, phone: e.target.value })
-                            }
-                            required
-                        />
-                    </div>
-                    <div className="field">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            placeholder="username@email.com"
-                            value={form.email}
-                            onChange={(e) =>
-                                setForm({ ...form, email: e.target.value })
-                            }
-                        />
-                    </div>
-                    <div className="form__actions">
-                        <button className="btn" type="submit" data-testid="btn-add">
-                            Add Contact
-                        </button>
-                    </div>
-                </form>
-            </section>
+  return (
+      <main className="page" data-testid="page-root">
+           <header className="page__header">
+               <div className="page__header-left">
+                   <h1 className="page__title">Hashiriya Book</h1>
+               </div>
 
-            <footer className="page__footer">
-                <small>
-                    &copy; 2025 <strong>Hashiriya Book</strong>. 走り屋をつなぐネットワーク
-                </small>
-            </footer>
-        </main>
-    );
+
+          </header>
+
+
+          <section className="search" aria-labelledby="search-heading">
+              <h2 id="contacts-heading" className="contacts__subtitle">Contacts</h2>
+              <div className="search-bar search-bar--fixed-width">
+                  <input
+                      type="search"
+                      placeholder="Search"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      aria-label="Search contacts"
+                  />
+              </div>
+              <p className="search__results" data-testid="results-count">
+                  Showing {contacts.length} {contacts.length === 1 ? "result" : "results"}
+                  {loading ? " (loading...)" : ""}
+                  {error ? ` (error: ${error})` : ""}
+              </p>
+          </section>
+
+
+          <section className="contacts" aria-labelledby="contacts-heading">
+              <ul className="contacts__list" data-testid="contacts-list">
+                  {contacts.map((contact) => (
+                      <li className="contact-card" key={contact.id}>
+                          <div className="contact-card__left">
+                              <img
+                                  className="contact-card__photo"
+                                  src={contact.photo}
+                                  alt={contact.alt}
+                              />
+                          </div>
+
+
+                           <div className="contact-card__center">
+                                   <div className="contact-card__meta">
+                                       <h3 className="contact-card__name">{contact.name}</h3>
+                                   </div>
+                           </div>
+
+
+                          <div className="contact-card__right">
+                              <button
+                                  className="icon-btn"
+                                  aria-label={`email ${contact.name}`}
+                                  title={contact.email}
+                                  data-tooltip={contact.email}
+                              >
+                                  ✉️
+                              </button>
+                              <button
+                                  className="icon-btn"
+                                  aria-label={`call ${contact.name}`}
+                                  title={contact.phone}
+                                  data-tooltip={contact.phone}
+                              >
+                                  📞
+                              </button>
+                          </div>
+                      </li>
+                  ))}
+              </ul>
+          </section>
+
+
+          <section className="form" aria-labelledby="form-heading">
+              <div className="form__header">
+                  <h2 id="form-heading">Add a Contact</h2>
+                  <button className="btn" type="submit" form="add-contact-form" data-testid="btn-add">
+                      Add Contact
+                  </button>
+              </div>
+              <form id="add-contact-form" className="form__body" onSubmit={handleSubmit} noValidate>
+                  <div className="field">
+                      <label htmlFor="name">Name</label>
+                      <input
+                          id="name"
+                          name="name"
+                          value={form.name}
+                          placeholder="Enter your first and last name"
+                          onChange={(e) => setForm({ ...form, name: e.target.value })}
+                          required
+                          minLength={2}
+                      />
+                  </div>
+                  <div className="field">
+                      <label htmlFor="phone">Phone</label>
+                      <input
+                          id="phone"
+                          name="phone"
+                          inputMode="tel"
+                          placeholder="(000) 000-0000"
+                          value={form.phone}
+                          onChange={(e) =>
+                              setForm({ ...form, phone: e.target.value })
+                          }
+                          required
+                      />
+                  </div>
+                  <div className="field">
+                      <label htmlFor="email">Email</label>
+                      <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="username@email.com"
+                          value={form.email}
+                          onChange={(e) =>
+                              setForm({ ...form, email: e.target.value })
+                          }
+                      />
+                      
+                  </div>
+                  <div className="form__actions">
+                      {/* submit moved to header */}
+                  </div>
+              </form>
+          </section>
+
+
+          <footer className="page__footer">
+              <small>
+                  &copy; 2025 <strong>Hashiriya Book</strong>. 走り屋をつなぐネットワーク
+              </small>
+          </footer>
+      </main>
+  );
 };
 
 export default App;

@@ -1,6 +1,18 @@
 import "./Contact.css";
 
 const Contact = (props) => {
+
+/*
+  props: {
+    id: string,
+    photo: string,
+    alt: string,
+    name: string,
+    phone: string,
+    email: string
+  }
+*/
+
     const { name, phone, email } = props;
     return (
         <div className="contact-card">
