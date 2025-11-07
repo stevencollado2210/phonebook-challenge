@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
+import Contact from "./components/Contact/Contact.jsx";
 
 // Contacts List (may be subject to changes).
 const Contactos = [
@@ -97,17 +98,22 @@ const Contactos = [
 
 
 const App = () => {
-  const [contacts, setContacts] = useState(Contactos);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+    const [contacts] = useState(Contactos);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
+    const [query, setQuery] = useState("");
 
-  useEffect(() => {
-      setContacts(Contactos);
-  }, []);
-
-
-  const [query, setQuery] = useState("");
+    // This makes a copy of contacts where each photo path is turned into a real URL.
+    // Allows the contact list to show the images instead of broken ones / 404s.
+    const resolvedContacts = useMemo(
+        () =>
+            contacts.map((c) => ({
+                ...c,
+                photo: new URL(c.photo, import.meta.url).href,
+            })),
+        [contacts]
+    );
 
 
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -126,69 +132,13 @@ const App = () => {
 
 
           </header>
-
-
-          <section className="search" aria-labelledby="search-heading">
-              <h2 id="contacts-heading" className="contacts__subtitle">Contacts</h2>
-              <div className="search-bar search-bar--fixed-width">
-                  <input
-                      type="search"
-                      placeholder="Search"
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                      aria-label="Search contacts"
-                  />
-              </div>
-              <p className="search__results" data-testid="results-count">
-                  Showing {contacts.length} {contacts.length === 1 ? "result" : "results"}
-                  {loading ? " (loading...)" : ""}
-                  {error ? ` (error: ${error})` : ""}
-              </p>
-          </section>
-
-
-          <section className="contacts" aria-labelledby="contacts-heading">
-              <ul className="contacts__list" data-testid="contacts-list">
-                  {contacts.map((contact) => (
-                      <li className="contact-card" key={contact.id}>
-                          <div className="contact-card__left">
-                              <img
-                                  className="contact-card__photo"
-                                  src={new URL(contact.photo, import.meta.url).href}
-                                  alt={contact.alt}
-                              />
-                          </div>
-
-
-                           <div className="contact-card__center">
-                                   <div className="contact-card__meta">
-                                       <h3 className="contact-card__name">{contact.name}</h3>
-                                   </div>
-                           </div>
-
-
-                          <div className="contact-card__right">
-                              <button
-                                  className="icon-btn"
-                                  aria-label={`email ${contact.name}`}
-                                  title={contact.email}
-                                  data-tooltip={contact.email}
-                              >
-                                  ✉️
-                              </button>
-                              <button
-                                  className="icon-btn"
-                                  aria-label={`call ${contact.name}`}
-                                  title={contact.phone}
-                                  data-tooltip={contact.phone}
-                              >
-                                  📞
-                              </button>
-                          </div>
-                      </li>
-                  ))}
-              </ul>
-          </section>
+            <Contact
+                contacts={resolvedContacts}
+                query={query}
+                onQueryChange={setQuery}
+                loading={loading}
+                error={error}
+            />
 
 
           <section className="form" aria-labelledby="form-heading">
@@ -237,7 +187,8 @@ const App = () => {
                               setForm({ ...form, email: e.target.value })
                           }
                       />
-                      
+                    
+                    
                   </div>
                   <div className="form__actions">
                       {/* submit moved to header */}
