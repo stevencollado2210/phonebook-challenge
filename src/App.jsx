@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import "./App.css";
 import Contact from "./components/Contact/Contact.jsx";
 
@@ -99,21 +99,29 @@ const Contactos = [
 
 const App = () => {
     const [contacts] = useState(Contactos);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
 
     const [query, setQuery] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // Reset to first page when query changes
+    useEffect(() => { setCurrentPage(1); }, [query]);
 
     // This makes a copy of contacts where each photo path is turned into a real URL.
     // Allows the contact list to show the images instead of broken ones / 404s.
-    const resolvedContacts = useMemo(
-        () =>
-            contacts.map((c) => ({
-                ...c,
-                photo: new URL(c.photo, import.meta.url).href,
-            })),
-        [contacts]
-    );
+    // Filter contacts by query (simple case-insensitive substring on name)
+    const filteredContacts = useMemo(() => {
+        const q = query.trim().toLowerCase();
+        if (!q) return contacts;
+        return contacts.filter(c => c.name.toLowerCase().includes(q));
+    }, [contacts, query]);
+
+    // Resolve photos for filtered contacts
+    const resolvedContacts = useMemo(() => filteredContacts.map(c => ({
+        ...c,
+        photo: new URL(c.photo, import.meta.url).href,
+    })), [filteredContacts]);
+
+    const totalPages = resolvedContacts.length; // one contact per page
 
 
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -136,8 +144,9 @@ const App = () => {
                 contacts={resolvedContacts}
                 query={query}
                 onQueryChange={setQuery}
-                loading={loading}
-                error={error}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
             />
 
 
