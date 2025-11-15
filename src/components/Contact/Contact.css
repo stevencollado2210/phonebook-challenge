@@ -1,11 +1,11 @@
 
+/* Contact card container: grid layout for photo, details, actions */
 .contact-card {
     display: grid;
     grid-template-columns: 160px 1fr auto;
     gap: 0.9rem 0.2rem;
     align-items: center;
-    padding: 1.5rem 1.5rem;
-    padding-left: 2.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
     background: var(--card-bg);
     border-radius: 12px;
     box-shadow: 0 8px 18px rgb(0,0,0);
@@ -13,6 +13,8 @@
     overflow: visible;
 }
 
+
+/* Contact photo: circular avatar with enlargement + shadow */
 .contact-card__photo {
     width: 130px;
     height: 130px;
@@ -23,11 +25,28 @@
     transform: translateX(-4px) scale(1.18);
 }
 
+
+/* Name heading: prominent contact name */
 .contact-card__name { margin: 0.15rem 0 0.25rem 0; font-size: 1.45rem; font-weight: 700; color: var(--fg); }
+
+/* Role/car line: muted metadata */
 .contact-card__role { margin: 0; color: var(--muted); }
+
+/* Right side actions: icon buttons spacing */
 .contact-card__right { display: flex; gap: 0.75rem; align-items: center; }
 
-/* Icon buttons */
+
+/* Highlighted search term styling */
+mark.hl {
+    background: rgba(0, 204, 255, 0.345);
+    color: inherit;
+    padding: 0 2px;
+    border-radius: 3px;
+    outline: 1px solid rgba(0, 204, 255, 0.680);
+}
+
+
+/* Icon button: circular action button */
 .icon-btn {
     width: 44px;
     height: 44px;
@@ -43,6 +62,8 @@
     transition: transform 180ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease, border-color 200ms ease;
 }
 
+
+/* Icon button hover: lift and glow */
 .icon-btn:hover {
     transform: translateY(-2px) scale(1.04);
     background: rgba(255,255,255,0.08);
@@ -50,6 +71,8 @@
     border-color: rgba(13, 161, 15, 0.981);
 }
 
+
+/* Keyboard focus: outline + elevated shadow */
 .icon-btn:focus-visible {
     outline: 3px solid rgba(255,255,255,0.12);
     outline-offset: 4px;
@@ -57,8 +80,11 @@
     border-color: rgba(13, 161, 15, 0.981);
 }
 
-/* Tooltip for icon buttons */
+
+/* Tooltip positioning anchor */
 .icon-btn[data-tooltip] { position: relative; }
+
+/* Tooltip bubble: hidden by default */
 .icon-btn[data-tooltip]::after {
     content: attr(data-tooltip);
     position: absolute;
@@ -77,5 +103,7 @@
     box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
+
+/* Tooltip visibility on hover/focus */
 .icon-btn[data-tooltip]:hover::after,
 .icon-btn[data-tooltip]:focus::after { opacity: 1; transform: translateX(-50%) translateY(0); }

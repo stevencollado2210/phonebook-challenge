@@ -1,4 +1,5 @@
 
+/* Pagination container: flex layout centering buttons */
 .pagination {
   margin-top: 1.75rem;
   display: flex;
@@ -9,6 +10,8 @@
   flex-wrap: wrap;
 }
 
+
+/* List of page number buttons (horizontal flex row) */
 .pagination__list {
   display: flex;
   gap: 0.75rem;
@@ -17,6 +20,8 @@
   margin: 0;
 }
 
+
+/* Base button: size, look, interaction transitions */
 .pagination__btn {
   min-width: 54px;
   height: 54px;
@@ -35,8 +40,12 @@
   box-shadow: 0 6px 14px rgba(0,0,0,0.6);
 }
 
+
+/* Nav buttons (Prev/Next): subtle alternate background */
 .pagination__btn--nav { background: rgba(255,255,255,0.02); }
 
+
+/* Hover/focus (enabled only): elevate and highlight border */
 .pagination__btn:hover:not(:disabled),
 .pagination__btn:focus-visible:not(:disabled) {
   transform: translateY(-3px);
@@ -44,6 +53,8 @@
   box-shadow: 0 12px 28px rgba(0,0,0,0.55), 0 0 12px rgba(13, 161, 15, 0.981);
 }
 
+
+/* Active page button: inverted colors to show selection */
 .pagination__btn--active {
   background: var(--fg);
   color: var(--bg);
@@ -51,24 +62,32 @@
   font-weight: 600;
 }
 
+
+/* Active button hover: keep position, subtle shadow change */
 .pagination__btn--active:hover {
   transform: none;
   box-shadow: 0 12px 28px rgba(0,0,0,0.7);
   border-color: var(--fg);
 }
 
+
+/* Disabled button: faded and non-interactive */
 .pagination__btn:disabled {
   opacity: 0.35;
   cursor: not-allowed;
   transform: none;
 }
 
+
+/* Responsive: smaller buttons and tighter gaps on narrow screens */
 @media (max-width: 640px) {
   .pagination { gap: 0.5rem; }
   .pagination__list { gap: 0.5rem; }
   .pagination__btn { min-width: 46px; height: 46px; font-size: 0.9rem; }
 }
 
+
+/* Reduced motion: remove transitions and transforms for accessibility */
 @media (prefers-reduced-motion: reduce) {
   .pagination__btn,
   .pagination__btn:hover,

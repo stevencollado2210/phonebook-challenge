@@ -1,20 +1,30 @@
 
+// Import styles for the pagination UI
 import "./Pagination.css";
 
+
+// Helper: clamps a number between min and max (inclusive)
 const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
+
+// Component: renders Prev/Next controls and numbered page buttons
 const Pagination = ({ currentPage = 1, totalPages = 1, onPageChange }) => {
-  const safePage = clamp(currentPage, 1, Math.max(1, totalPages));
+  const safePage = clamp(currentPage, 1, Math.max(1, totalPages));   
   const pages = Array.from({ length: Math.max(1, totalPages) }, (_, i) => i + 1);
 
+  
+  // Navigate to a page safely and notify parent only if it changes
   const goTo = (p) => {
     if (!onPageChange) return;
     const next = clamp(p, 1, Math.max(1, totalPages));
     if (next !== safePage) onPageChange(next);
   };
 
+
+  // Render the pagination navigation (Prev, page list, Next)
   return (
     <nav className="pagination" aria-label="Pagination">
+      {/* Previous page button */}
       <button
         className="pagination__btn pagination__btn--nav"
         type="button"
@@ -25,6 +35,8 @@ const Pagination = ({ currentPage = 1, totalPages = 1, onPageChange }) => {
         <span aria-hidden>{"< Back"}</span>
       </button>
 
+
+      {/* Page number buttons */}
       <ul className="pagination__list" role="list">
         {pages.map((p) => (
           <li key={p} className="pagination__item">
@@ -43,6 +55,8 @@ const Pagination = ({ currentPage = 1, totalPages = 1, onPageChange }) => {
         ))}
       </ul>
 
+
+      {/* Next page button */}
       <button
         className="pagination__btn pagination__btn--nav"
         type="button"

@@ -1,7 +1,10 @@
 
+// Import styles and the Pagination component
 import "./Contact.css";
 import Pagination from "../Pagination/Pagination.jsx";
 
+
+// Component: shows a search bar, the selected contact card, and pagination controls
 const Contact = ({
   contacts = [],
   query = "",
@@ -9,11 +12,34 @@ const Contact = ({
   currentPage = 1,
   totalPages = 1,
   onPageChange,
+  loading = false,
+  error = "",
 }) => {
+
+
+  // Computes the currently selected contact based on the current page (1-based)
   const count = contacts.length;
   const index = Math.max(0, Math.min(count - 1, currentPage - 1));
   const selectedContact = count > 0 ? contacts[index] : null;
 
+
+  // Highlight bonus: wraps matching query text in <mark class="hl"> … </mark>
+  // It’s like using a highlighter pen on a page.
+  const highlight = (text, q) => {
+    if (!q) return text;
+    try {
+      const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const re = new RegExp(escaped, "ig");
+      return text.replace(re, (m) => `<mark class=\"hl\">${m}</mark>`);
+    } catch { return text; }
+  };
+
+
+  // Precomputes highlighted name markup for the selected contact
+  const nameHtml = selectedContact ? highlight(selectedContact.name, query) : "";
+
+
+  // Search input + results count, contact card (if any), and pagination
   return (
     <>
       <section className="search" aria-labelledby="contacts-heading">
@@ -28,12 +54,19 @@ const Contact = ({
           />
         </div>
         <p className="search__results" data-testid="results-count">
-          Showing {count} {count === 1 ? "result" : "results"}
+          {loading ? "Loading contacts…" : (
+            <>Showing {count} {count === 1 ? "result" : "results"}</>
+          )}
         </p>
       </section>
 
       <section className="contacts" aria-labelledby="contacts-heading">
-        {count === 0 ? (
+        {error && !loading && (
+          <p className="field__error" role="alert">{error}</p>
+        )}
+        {loading ? (
+          <p className="search__results">Please wait…</p>
+        ) : count === 0 ? (
           <p className="search__results">No results found.</p>
         ) : (
           <ul className="contacts__list" data-testid="contacts-list">
@@ -44,8 +77,10 @@ const Contact = ({
 
               <div className="contact-card__center">
                 <div className="contact-card__meta">
-                  <h3 className="contact-card__name">{selectedContact.name}</h3>
-                  <p className="contact-card__role"><strong>Car:</strong> <em>{selectedContact.car}</em></p>
+                  <h3 className="contact-card__name" dangerouslySetInnerHTML={{ __html: nameHtml }} />
+                  {selectedContact.car && (
+                    <p className="contact-card__role"><strong>Car:</strong> <em>{selectedContact.car}</em></p>
+                  )}
                 </div>
               </div>
 
@@ -53,16 +88,16 @@ const Contact = ({
                 <button
                   className="icon-btn"
                   aria-label={`email ${selectedContact.name}`}
-                  title={selectedContact.email}
-                  data-tooltip={selectedContact.email}
+                  title={selectedContact.email || "No email"}
+                  data-tooltip={selectedContact.email || "No email"}
                 >
                   ✉️
                 </button>
                 <button
                   className="icon-btn"
                   aria-label={`call ${selectedContact.name}`}
-                  title={selectedContact.phone}
-                  data-tooltip={selectedContact.phone}
+                  title={selectedContact.phone || "No phone"}
+                  data-tooltip={selectedContact.phone || "No phone"}
                 >
                   📞
                 </button>

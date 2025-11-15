@@ -1,3 +1,5 @@
+
+/* Theme CSS variables: colors, backgrounds, common tokens */
 :root {
   --bg: #000000;
   --card-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
@@ -9,11 +11,11 @@
 }
 
 
-/* Page background and container */
+/* Global page background: full-height, image, color, attachment */
 html, body {
   height: 100%;
   background-color: var(--bg);
-  background-image: url('./Images/BG1.jpg');
+  background-image: url('/Images/BG1.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -22,6 +24,7 @@ html, body {
 }
 
 
+/* Main container: centered max-width layout with backdrop and border */
 .page {
   max-width: 1100px;
   margin: 0 auto;
@@ -33,6 +36,7 @@ html, body {
 }
 
 
+/* Overlay: dark translucent layer + backdrop filter for visual depth */
 .page::before {
   content: "";
   position: absolute;
@@ -45,10 +49,11 @@ html, body {
 }
 
 
+/* Ensures content sits above overlay pseudo-element */
 .page > * { position: relative; z-index: 1; }
 
 
-/* Header / title */
+/* Header bar: flex row for title + potential actions */
 .page__header {
   display: flex;
   align-items: center;
@@ -59,6 +64,7 @@ html, body {
 }
 
 
+/* Title styling: large centered heading, absolute centering technique */
 .page__title {
   margin: 0;
   font-size: 2.7rem;
@@ -72,15 +78,16 @@ html, body {
 }
 
 
+/* Responsive title size for narrow screens */
 @media (max-width: 720px) { .page__title { font-size: 1.5rem; } }
 
 
-.page__header-right { min-width: 320px; display: flex; justify-content: flex-end; }
-
-
-/* Search bar */
+/* Search bar container + width constraints */
 .search-bar { width: 100%; }
 .search-bar--fixed-width { max-width: 320px; width: 100%; }
+
+
+/* Search input control */
 .search-bar input {
   width: 100%;
   padding: 0.6rem 1rem;
@@ -92,7 +99,7 @@ html, body {
 }
 
 
-/* Scoped focus for the search input only (Option A) */
+/* Emphasized focus ring for search input only */
 .search-bar input:focus-visible {
   outline: none;
   border-color: rgba(13, 161, 15, 0.981);
@@ -101,16 +108,15 @@ html, body {
 }
 
 
-/* Generic placeholder style for other controls */
+/* Unified placeholder styling for form controls */
 input::placeholder, textarea::placeholder, select::placeholder { color: #ffffffda; opacity: 0.85; }
 
-.page__subtitle { margin: 0; color: var(--muted); }
+
+/* Subtitle spacing next to contacts header */
 .contacts__subtitle { margin-left: 0.5rem; }
 
-.toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
 
-
-/* Buttons */
+/* Buttons: generic button styling */
 .btn {
   border-radius: 8px;
   border: 1.8px solid var(--border);
@@ -122,7 +128,7 @@ input::placeholder, textarea::placeholder, select::placeholder { color: #ffffffd
 }
 
 
-/* Hover + keyboard focus for primary .btn (Add Contact) */
+/* Interactive states: hover & keyboard focus elevate button */
 .btn:hover,
 .btn:focus-visible {
   transform: translateY(-3px) scale(1.03);
@@ -131,33 +137,36 @@ input::placeholder, textarea::placeholder, select::placeholder { color: #ffffffd
 }
 
 
-.theme { display: inline-flex; gap: 0.5rem; align-items: center; margin-left: 1rem; }
+/* Search section vertical spacing */
 .search { margin-top: 2rem; padding-top: 0.5rem; }
 
 
+/* Responsive spacing adjustments for small screens */
 @media (max-width: 520px) { .page__header { margin-bottom: 1.25rem; } .search { margin-top: 1rem; } }
 
-.search__controls { display: grid; grid-template-columns: minmax(140px, 1fr) 1fr minmax(120px, 1fr) 1fr; gap: 0.5rem 1rem; align-items: center; }
+
+/* Displays filtered result count / status */
 .search__results { color: var(--muted); font-size: 18px; margin-left: 0.5rem; }
 
 
-/* Contacts list */
+/* Contacts list wrapper + grid list */
 .contacts { margin-top: 1.25rem; }
 .contacts__list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
 
 
-/* Form */
+/* Add-contact form layout + field + inline error styling */
 .form { margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem; font-size: 17px; line-height: 1.35; }
 .form__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
 .form__body { display: grid; gap: 0.75rem 1rem; grid-template-columns: repeat(3, 1fr); align-items: start; }
 .field { display: grid; gap: 0.25rem; min-width: 0; }
+.field__error { color: #ff6b6b; font-size: 13px; line-height: 1.2; }
 
 
-/* Inputs */
+/* Base styling for form controls */
 input, select { border-radius: 8px; border: 1.8px solid var(--border); padding: 0.5rem 0.75rem; background: var(--input-bg); color: var(--fg); }
 
 
-/* Focus-visible: subtle border + faint glow (Option A) */
+/* Consistent focus-visible ring for all form controls */
 input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: none;
   border-color: rgba(13, 161, 161, 0.981);
@@ -165,18 +174,23 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   transition: box-shadow 180ms ease, border-color 180ms ease;
 }
 
+
+/* Makes inputs span grid cell width without overflow */
 .form__body input, .form__body select, .form__body textarea { width: 100%; max-width: 100%; box-sizing: border-box; }
 
-.form__actions { display: flex; gap: 0.5rem; }
+
+/* Footer spacing + text alignment */
 .page__footer { margin-top: 3rem; color: #ffffff; text-align: center; }
 
+
+/* Responsive grid collapse for form & search controls */
 @media (max-width: 720px) {
   .form__body { grid-template-columns: 1fr; }
   .search__controls { grid-template-columns: 1fr 1fr; }
 }
 
 
-/* Consolidated reduced-motion rule */
+/* Accessibility: disable animations & transforms for reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .btn, .btn:hover,
   .icon-btn, .icon-btn:hover, .icon-btn:focus, .icon-btn:focus-visible,
